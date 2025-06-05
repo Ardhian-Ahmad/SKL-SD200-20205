@@ -16,21 +16,20 @@
     header {
       background: #5A35F0;
       color: white;
-      padding: 20px 0;
+      padding: 20px;
       text-align: center;
       border-radius: 0 0 20px 20px;
       position: relative;
     }
 
     header img {
-      height: 60px;
-      vertical-align: middle;
+      max-width: 100px;
+      height: auto;
+      display: block;
+      margin: 0 auto 10px;
     }
 
-    header .school-title {
-      display: inline-block;
-      margin-left: 10px;
-      vertical-align: middle;
+    .school-title {
       font-size: 20px;
       font-weight: 700;
     }
@@ -44,7 +43,7 @@
     .year-badge {
       position: absolute;
       top: 20px;
-      right: 30px;
+      right: 20px;
       background: #FFDC40;
       color: #333;
       padding: 6px 12px;
@@ -119,6 +118,40 @@
       padding: 20px;
       color: #777;
     }
+
+    @media (max-width: 600px) {
+      header img {
+        max-width: 80px;
+      }
+
+      .school-title {
+        font-size: 18px;
+      }
+
+      .year-badge {
+        font-size: 12px;
+        padding: 4px 10px;
+      }
+
+      main {
+        margin: 20px auto;
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      input {
+        width: 90%;
+        font-size: 14px;
+      }
+
+      button {
+        padding: 10px 20px;
+        font-size: 14px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -126,7 +159,7 @@
     <img src="logo_sekolah.png" alt="Logo Sekolah">
     <div class="school-title">UPT SDN 200 GRESIK</div>
     <div class="school-address">Jl. Raya Kedamean No. 45 Kecamatan Kedamean Kabupaten Gresik</div>
-    <div class="year-badge">TAHUN AJARAN 2023/2024</div>
+    <div class="year-badge">TAHUN AJARAN 2024/2025</div>
   </header>
 
   <main>
@@ -134,14 +167,13 @@
     <p>Silakan masukkan nomor urut siswa untuk mengunduh Surat Keterangan Lulus (SKL) Anda.</p>
     <input type="text" id="nisn" placeholder="Contoh: D0510022400001" />
     <br />
-    <button onclick="downloadSKL()">Periksa Kelulusan</button>
+    <button onclick="downloadSKL()">Unduh SKL</button>
     <div id="message" class="message"></div>
   </main>
 
   <footer>
-    &copy; 2024 UPT SDN 200 Gresik. Hak Cipta Dilindungi.
+    &copy; 2025 UPT SDN 200 Gresik. Hak Cipta Dilindungi.
   </footer>
-
   <script>
     const students = {
       "D0510022400001": "Alin Syafara",
