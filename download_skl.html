@@ -8,8 +8,8 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #F5F5F5;
-            color: #1C1C1C;
+            background-color: #f4f4f4;
+            color: #333;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -18,52 +18,50 @@
         }
         .container {
             text-align: center;
-            background-color: #FFFFFF;
+            background-color: #fff;
             padding: 20px;
-            border-radius: 10px;
+            border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        .logo {
+        .container img {
             width: 150px;
             margin-bottom: 20px;
         }
-        h1 {
+        .container h1 {
             color: #E21E1E;
         }
-        input[type="text"] {
+        .container input[type="text"] {
             padding: 10px;
             width: 80%;
             margin-bottom: 20px;
-            border: 1px solid #ABABAB;
-            border-radius: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
         }
-        button {
-            background-color: #FFBC00;
-            color: #FFFFFF;
+        .container button {
             padding: 10px 20px;
+            background-color: #FFBC00;
             border: none;
-            border-radius: 5px;
+            border-radius: 4px;
+            color: #fff;
             cursor: pointer;
         }
-        button:hover {
+        .container button:hover {
             background-color: #E21E1E;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <img src="logo_sekolah.png" alt="Logo Sekolah" class="logo">
+        <img src="logo_sekolah.png" alt="Logo Sekolah">
         <h1>Download SKL</h1>
-        <p>Masukkan NISN untuk mengunduh SKL:</p>
         <input type="text" id="nisn" placeholder="Masukkan NISN">
-        <br>
         <button onclick="downloadSKL()">Download</button>
     </div>
     <script>
         function downloadSKL() {
             var nisn = document.getElementById('nisn').value;
-            var url = 'https://username.github.io/repo-name/SKL_' + nisn + '.pdf';
-            window.open(url, '_blank');
+            var url = 'https://Ardhian-Ahmad.github.io/SKL-SD200-20205/SKL_' + nisn + '.pdf';
+            window.location.href = url;
         }
     </script>
 </body>
