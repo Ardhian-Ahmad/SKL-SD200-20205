@@ -1,86 +1,184 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download SKL</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #F5F5F5;
-            color: #1C1C1C;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .container {
-            background-color: #FFFFFF;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-        .logo {
-            width: 100px;
-            margin-bottom: 20px;
-        }
-        h1 {
-            color: #E21E1E;
-        }
-        input[type="text"] {
-            padding: 10px;
-            width: 80%;
-            margin-bottom: 20px;
-            border: 1px solid #ABABAB;
-            border-radius: 5px;
-        }
-        button {
-            padding: 10px 20px;
-            background-color: #FFBC00;
-            color: #FFFFFF;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #E21E1E;
-        }
-        .error {
-            color: #E21E1E;
-            margin-top: 20px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Download SKL</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 90%;
+      max-width: 500px;
+    }
+    .logo {
+      width: 80px;
+      margin-bottom: 10px;
+    }
+    .school-name {
+      font-size: 20px;
+      font-weight: bold;
+      color: #1C1C1C;
+    }
+    .school-address {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 10px;
+    }
+    .year-box {
+      background-color: #FFBC00;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-weight: bold;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+    h1 {
+      color: #E21E1E;
+      margin-bottom: 5px;
+    }
+    p {
+      color: #333;
+      margin-bottom: 20px;
+    }
+    input {
+      padding: 10px;
+      width: 80%;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 15px;
+    }
+    button {
+      background-color: #FFBC00;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover {
+      background-color: #E21E1E;
+    }
+    .message {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    .success {
+      color: #1C1C1C;
+    }
+    .error {
+      color: #E21E1E;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <img src="logo_sekolah.png" alt="Logo Sekolah" class="logo">
-        <h1>Download SKL</h1>
-        <input type="text" id="nisn" placeholder="Masukkan NISN">
-        <button onclick="downloadSKL()">Download</button>
-        <div id="error" class="error"></div>
-    </div>
-    <script>
-        function downloadSKL() {
-            var nisn = document.getElementById('nisn').value;
-            var errorDiv = document.getElementById('error');
-            errorDiv.textContent = '';
+  <div class="container">
+    <img src="logo_sekolah.png" alt="Logo Sekolah" class="logo" />
+    <div class="school-name">SEKOLAH MENENGAH ATAS</div>
+    <div class="school-address">Jl. Pendidikan No. 123, Indonesia</div>
+    <div class="year-box">TAHUN AJARAN 2023/2024</div>
+    <h1>Download SKL</h1>
+    <p>Silakan masukkan nomor urut siswa untuk mengunduh Surat Keterangan Lulus (SKL) Anda.</p>
+    <input type="text" id="nisn" placeholder="Contoh: D0510022400001" />
+    <br />
+    <button onclick="downloadSKL()">Periksa Kelulusan</button>
+    <div id="message" class="message"></div>
+  </div>
 
-            if (nisn === '') {
-                errorDiv.textContent = 'NISN tidak boleh kosong!';
-                return;
-            }
+  <script>
+    const students = {
+      "D0510022400001": "Alin Syafara",
+      "D0510022400002": "Anwar Basar",
+      "D0510022400003": "Binar Kirana Ade Raama",
+      "D0510022400004": "Cahya Satria Ramadhan",
+      "D0510022400005": "Doni Ardiansyah",
+      "D0510022400006": "Ela Audri Sari",
+      "D0510022400007": "Fellieciea Alloke Putri",
+      "D0510022400008": "Galuh Mutiara Maulidina",
+      "D0510022400009": "Keanu Akbar Ramadhan",
+      "D0510022400010": "Mahardika Putra Wihariyanto",
+      "D0510022400011": "Maulana Rifqiy",
+      "D0510022400012": "Miftakhul Nizzam Akhyar",
+      "D0510022400013": "Mohammad Taufik Hidayat",
+      "D0510022400014": "Muhammad Bara Kencana",
+      "D0510022400015": "Nayla Aprilia Jasmin",
+      "D0510022400016": "Nayla Syifa Natania Yusuf",
+      "D0510022400017": "Raihan Afiq Erlangga",
+      "D0510022400018": "Rasya Ahmad Dzaky Arrezky",
+      "D0510022400019": "Riski Adi Sutomo",
+      "D0510022400020": "Rizky Adifa Ramadhan",
+      "D0510022400021": "Salwa Dwi Herta Wiritanaya",
+      "D0510022400022": "Zahra Violensa Artamevia Rahman",
+      "D0510022400023": "Adam Zaidhan Haryono",
+      "D0510022400024": "Adinda Putri Setiawan",
+      "D0510022400025": "Afiqa Nailatun Najwa",
+      "D0510022400026": "Alvaro Syachputra",
+      "D0510022400027": "Aqilla Sayyida Aj Zahwa",
+      "D0510022400028": "Arsyad Al Asrori Dharmawan",
+      "D0510022400029": "Aurellia Az Zahra Adipatria",
+      "D0510022400030": "Destik Octaviani Khoirun Nisa",
+      "D0510022400031": "Devi Kirana Putri",
+      "D0510022400032": "Fellixia Aiko Fairus Cahyono",
+      "D0510022400033": "Filza Zaskiya Swina",
+      "D0510022400034": "Indah Amelia Putri",
+      "D0510022400035": "Indri Novani Eka Putri",
+      "D0510022400036": "Kurnia Anggraini",
+      "D0510022400037": "Malikku Mohammad",
+      "D0510022400038": "Moch Izzuddin Zanuar Rifansyah",
+      "D0510022400039": "Muchammad Devin Izzuddin",
+      "D0510022400040": "Nariyah Fatih Nur Aida",
+      "D0510022400041": "Nasya Avrilia Putri",
+      "D0510022400042": "Naziela Ayunda Putri Purnomo",
+      "D0510022400043": "Puspa Ayu Gitara",
+      "D0510022400044": "Rachman Aditya Alhaddad",
+      "D0510022400045": "Raisyah Salsabilla Basyaeb",
+      "D0510022400046": "Reyhan Abraham Alfarizzy",
+      "D0510022400047": "Satria Tri Hidayat Novianto",
+      "D0510022400048": "Shoraidah Silmi Muslimah",
+      "D0510022400049": "Zavier Azfar Arrachman Al-Sasmita"
+    };
 
-            var url = 'https://Ardhian-Ahmad.github.io/SKL-SD200-2025/SKL_' + nisn + '.pdf';
-            var link = document.createElement('a');
-            link.href = url;
-            link.download = 'SKL_' + nisn + '.pdf';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
-    </script>
+    function downloadSKL() {
+      const nisn = document.getElementById("nisn").value.trim();
+      const message = document.getElementById("message");
+
+      if (!nisn) {
+        message.textContent = "Nomor urut siswa tidak boleh kosong!";
+        message.className = "message error";
+        return;
+      }
+
+      if (students[nisn]) {
+        const nama = students[nisn];
+        const url = `https://Ardhian-Ahmad.github.io/SKL-SD200-2025/SKL_${nisn}.pdf`;
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = `SKL_${nisn}.pdf`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        message.textContent = `🎉 Selamat ${nama}! SKL Anda berhasil diunduh.`;
+        message.className = "message success";
+      } else {
+        message.textContent = "Nomor urut siswa tidak ditemukan!";
+        message.className = "message error";
+      }
+    }
+  </script>
 </body>
 </html>
